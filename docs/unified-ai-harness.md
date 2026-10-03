@@ -14,7 +14,7 @@ In my project, `lifedrawing.art`, I recently realized I was suffering from sever
 
 The problem? **Configuration sprawl.** 
 
-![Configuration Sprawl vs. Unified Harness](./sprawl-vs-unified.svg)
+![Configuration Sprawl vs. Unified Harness](https://github.com/fliptopbox/airc/raw/main/docs/sprawl-vs-unified.svg)
 
 My repo was littered with `.cursorrules`, `.github/copilot-instructions.md`, `.claude/settings.local.json`, and `.agents/SYSTEM_DIRECTIVE_GLOBAL.md`. Every time my architectural standards changed, I had to update four different rule files. 
 
@@ -53,7 +53,7 @@ Conceptually, it’s beautiful. Absolute zero-duplication at the filesystem leve
 
 ## 2. The Practical Solution: Enter `AGENT.md`
 
-![AGENT.md: The index.html for AI](./agent-index-model.svg)
+![AGENT.md: The index.html for AI](https://github.com/fliptopbox/airc/raw/main/docs/agent-index-model.svg)
 
 To solve this practically, a new standard is emerging in the community: the **`AGENT.md` convention**. 
 
