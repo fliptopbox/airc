@@ -102,6 +102,17 @@ If your AI needs to run a database query, you don't put the database password in
 
 ---
 
+## 5. Scaling from Solo to Team (Handling Edge Cases)
+
+If you are moving this framework from a solo project to a multi-developer enterprise environment, you will hit four critical edge cases. A Senior Engineer review of this architecture revealed the following necessary additions to your `AGENT.md`:
+
+1. **Git Context Blindness:** An overly eager agent might accidentally execute destructive commands on `main`. You must add a Tier 1 Guardrail explicitly commanding the agent to run `git branch --show-current` before modifying code.
+2. **MCP Authentication Leaks:** Secrets should stay on the host machine. But if an MCP tool fails due to missing credentials, an agent might hallucinate and ask the user to paste an API key into the chat. You must explicitly instruct agents to halt and prompt the user to configure their local environment variables instead.
+3. **The "Token Tax" Paradox:** As your `.ai/` documentation grows, instructing the agent to "read `.ai/02-architecture.md`" will eventually trigger massive context-window bloat. Agents must be instructed to use `grep` or semantic search to extract only relevant sections.
+4. **Concurrent State Collisions:** It is not enough to tell an agent to *read* a Linear/Jira ticket. In a team environment, two agents might pick up the same ticket simultaneously. You must mandate that agents use MCP tools to explicitly transition ticket state to "In Progress" *before* writing code.
+
+---
+
 ## The End Goal: The AI-Readable Repository
 
 We spend so much time making code readable for humans. The next era of software engineering is making repositories readable for AI. 
