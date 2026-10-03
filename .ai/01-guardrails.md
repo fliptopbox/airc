@@ -3,6 +3,7 @@
 ## 1. Zero-Leak Policy
 - Never expose service-role keys, database passwords, or third-party API secret keys in client-side code.
 - All environment variables used in client bundles must be explicitly whitelisted (e.g., prefixed with `PUBLIC_` or `VITE_`).
+- **MCP Authentication Boundary:** Never attempt to pass credentials or keys as arguments to MCP tools. MCP tools handle their own authentication via the host environment. If an MCP tool fails due to missing credentials, halt execution and explicitly ask the user to configure their local MCP server environment variables.
 
 ## 2. PII Handling (Personally Identifiable Information)
 - Do not write queries that use `SELECT *` on tables containing PII.
